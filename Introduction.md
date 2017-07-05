@@ -1,8 +1,12 @@
 # Introduction to Laravel Testing
 
+## Test Case:
+- Test Case is a commonly used term for a specific test. This is usually the smallest unit of testing.
+- A Test Case will consist of information such as requirements testing (a set of inputs, execution preconditions), test steps, verification steps, prerequisites, outputs, test environment, etc.
+
 ## Unit Test
 - Unit testing is a software testing method by which **individual units** of source code are tested to determine whether they are fit for use.
-- In a Laravel project, a Unit test is written to test a **particular function**
+- In a Laravel project, writing Unit test is the procedure in which all test cases for **particular function/method** are witten.
 - Unit test should be designed to test the function **independently**. In other words: **`A` requires `B` to run. Even when `B` is broken, unit test of `A` SHOULD PASS if there are no problems with `A`.**
 - A good Unit test **SHOULD NOT**:
     - Trigger to run codes from other funtions in project
