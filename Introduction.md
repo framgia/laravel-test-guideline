@@ -21,13 +21,36 @@
 ## PHPUnit
 - **PHPUnit** is a programmer-oriented testing framework for PHP. It is an instance of the xUnit architecture for unit testing frameworks.
 - [Installation Guide](https://phpunit.de/getting-started.html)
+
+### Per-project installation
+```
+$ composer require --dev phpunit/phpunit
+```
+
+- Homepage: https://phpunit.de/
+- Laravel project is already integrated with PHPUnit. You can start testing your App using the command:
+```
+$ ./vendor/bin/phpunit
+```
+
+> Local per-project installation is highly recommented as you might have dependencies on different versions of PHPUnit in different projects.
+
+### Global installation
+
+- Via download:
 ```
 $ wget https://phar.phpunit.de/phpunit.phar
 $ chmod +x phpunit.phar
 $ sudo mv phpunit.phar /usr/local/bin/phpunit
 ```
-- Homepage: https://phpunit.de/
-- Laravel project is already integrated with PHPUnit. You can start testing your App using the command:
+- Via composer:
+```
+$ composer global require phpunit/phpunit
+```
+
+Make sure you have added `/home/<user>/.composer/vendor/bin` or `c:\Users<user>\AppData\Roaming\Composer\vendor\bin` to your `PATH` variable.
+
+- You can run globally installed PHPUnit from anywere:
 ```
 $ phpunit
 ```
