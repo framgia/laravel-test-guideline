@@ -71,6 +71,7 @@ phpunit --coverage-html <dir>
 // Generate code coverage report in Clover XML format.
 phpunit --coverage-clover <file>
 ```
+- Code Coverage is a really useful tool for finding untested codes in your project. However, it is not a powerful number that can state how good your tests are.
 
 ## Documents
 - [PHPUnit Manual](https://phpunit.de/manual/current/en/phpunit-book.pdf)
