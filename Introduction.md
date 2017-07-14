@@ -1,6 +1,6 @@
 # Introduction to Laravel Testing
 
-## Test Case:
+## Test Case
 - Test Case is a commonly used term for a specific test. This is usually the smallest unit of testing.
 - A Test Case will consist of information such as requirements testing (a set of inputs, execution preconditions), test steps, verification steps, prerequisites, outputs, test environment, etc.
 
