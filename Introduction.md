@@ -13,6 +13,7 @@
     - Hit the database
     - Use the file system
     - Access the network
+    - ...
 
 ## Integration Test
 - Integration testing is the phase in software testing in which individual software modules are combined and tested as a group.

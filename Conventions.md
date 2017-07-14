@@ -7,14 +7,13 @@
 
 ## Naming Convention
 - Each test file MUST have a specific namespace. The namespace MUST start with `Tests\` (or `ASampleProjectTests\`), then followed by the folder structure. For example, namespace for `tests/Unit/Models/UserTest.php` file MUST be `Tests\Unit\Models\UserTest` (or `ASampleProjectTests\Unit\Models\UserTest`)
-- Use `@test` annotation for all test function
-- Use `snake_case` for test function's name. For example:
+- For better readability, use `snake_case` for test function's name. A test function has to start with `test`, so here is an example:
 ```
-/** @test */
-public function it_throws_an_exception_when_email_is_too_long()
+public function test_it_throws_an_exception_when_email_is_too_long()
 {
 }
 ```
+- Non-test function can stick with PSR-2 rule, that uses `camelCase` for function name.
 
 ## Unit Test Required Components
 - **Controllers**: with disabled events handling. All external components MUST be mocked.
