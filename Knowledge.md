@@ -29,7 +29,7 @@ we should write the test cases as below:
 public function test_valid_email_format_and_length()
 {
     // Email with length 18 (less than: maximum - 1)
-    $email = "sample@framgia.com";
+    $email = 'sample@framgia.com';
     $this->assertEquals(true, validate($email));
 }
 ```
@@ -43,21 +43,21 @@ public function test_valid_email_format_and_length()
 public function test_valid_email_format_and_length_max_minus()
 {
     // Email with length 49 (maximum - 1)
-    $email = "samplesamplesamplesamplesamplesamples@framgia.com";
+    $email = 'samplesamplesamplesamplesamplesamples@framgia.com';
     $this->assertEquals(true, validate($email));
 }
 
 public function test_valid_email_format_and_length_max()
 {
     // Email with length 50 (equal maximum)
-    $email = "samplesamplesamplesamplesamplesamplesa@framgia.com";
+    $email = 'samplesamplesamplesamplesamplesamplesa@framgia.com';
     $this->assertEquals(true, validate($email));
 }
 
 public function test_valid_email_format_and_length_max_plus()
 {
     // Email with length 51 (maximum + 1)
-    $email = "samplesamplesamplesamplesamplesamplesam@framgia.com";
+    $email = 'samplesamplesamplesamplesamplesamplesam@framgia.com';
     $this->assertEquals(false, validate($email));
 }
 ```
@@ -71,14 +71,14 @@ public function test_valid_email_format_and_length_max_plus()
 public function test_invalid_email_format()
 {
     // Invalid email format with normal length (between 0 ~ 50)
-    $email = "framgia.com";
+    $email = 'framgia.com';
     $this->assertEquals(false, validate($email));
 }
 
 public function test_valid_email_format_and_length_exceeded()
 {
     // Email with length 54
-    $email = "samplesamplesamplesamplesamplesamplesample@framgia.com";
+    $email = 'samplesamplesamplesamplesamplesamplesample@framgia.com';
     $this->assertEquals(false, validate($email));
 }
 ```
