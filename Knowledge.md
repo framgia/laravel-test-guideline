@@ -1,4 +1,4 @@
-# Knowledge about Testing
+# Knowledge about Unit Testing
 
 ## Classify
 
@@ -29,7 +29,7 @@ we should write the test cases as below:
 public function test_valid_email_format_and_length()
 {
     // Email with length 18 (less than: maximum - 1)
-    $email = "sample@framgia.com";
+    $email = 'sample@framgia.com';
     $this->assertEquals(true, validate($email));
 }
 ```
@@ -43,21 +43,21 @@ public function test_valid_email_format_and_length()
 public function test_valid_email_format_and_length_max_minus()
 {
     // Email with length 49 (maximum - 1)
-    $email = "samplesamplesamplesamplesamplesamples@framgia.com";
+    $email = 'samplesamplesamplesamplesamplesamples@framgia.com';
     $this->assertEquals(true, validate($email));
 }
 
 public function test_valid_email_format_and_length_max()
 {
     // Email with length 50 (equal maximum)
-    $email = "samplesamplesamplesamplesamplesamplesa@framgia.com";
+    $email = 'samplesamplesamplesamplesamplesamplesa@framgia.com';
     $this->assertEquals(true, validate($email));
 }
 
 public function test_valid_email_format_and_length_max_plus()
 {
     // Email with length 51 (maximum + 1)
-    $email = "samplesamplesamplesamplesamplesamplesam@framgia.com";
+    $email = 'samplesamplesamplesamplesamplesamplesam@framgia.com';
     $this->assertEquals(false, validate($email));
 }
 ```
@@ -71,25 +71,50 @@ public function test_valid_email_format_and_length_max_plus()
 public function test_invalid_email_format()
 {
     // Invalid email format with normal length (between 0 ~ 50)
-    $email = "framgia.com";
+    $email = 'framgia.com';
     $this->assertEquals(false, validate($email));
 }
 
 public function test_valid_email_format_and_length_exceeded()
 {
     // Email with length 54
-    $email = "samplesamplesamplesamplesamplesamplesample@framgia.com";
+    $email = 'samplesamplesamplesamplesamplesamplesample@framgia.com';
     $this->assertEquals(false, validate($email));
 }
 ```
 
 </details>
 
-## Mocks
+## Test Doubles
+One of the fundamental requirements of Unit Test is **isolation**. In general, isolation is hard (if not impposible) as there are always dependencies across the whole project.
 
-## Stubs
+Therefore, the concept of `Test Doubles` was born. A `Test Double` allows us to break the original dependency, helping isolate the unit.
 
-## Dummies
+Here are some types of `Test Doubles`
 
-## Factories
+***Some parts of following definitions are taken from Martin Fowler's Blog [Mocks Aren't Stubs](https://martinfowler.com/articles/mocksArentStubs.html)***
 
+### Dummies
+- Dummy objects are passed around but never actually used. Usually they are just used to fill parameter lists.
+
+### Fake
+- Fake objects actually have working implementations, but usually take some shortcut which makes them not suitable for production (an in memory database is a good example).
+
+### Stubs
+- Stubs provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test. In a shorthand, Stubs give out data that goes to the object/class under the tests.
+
+### Mocks
+- Mocks are objects pre-programmed with expectations which form a specification of the calls they are expected to receive.
+
+### Stubs vs Mocks
+- Stub helps us to run test. Otherwise, Mock is an object which runs the test.
+- A Fake which you verify calls against is a Mock. Otherwise, it's a Stub.
+- Stub can never fail the test. Otherwise, Mock can.
+
+## Examples
+- Here are some PHP Mocking Frameworks that you can use to easily create Mocks for testing:
+    - Mockery: It is highly recommended. It has been already integrated with Laravel Project. Document [here](http://docs.mockery.io/)
+    - Prophecy: A part of PHPSpec project, but can be used outside PHPSpec. Check it [here](https://github.com/phpspec/prophecy)
+- Examples of creating Stubs and Mocks using **Mockery**
+
+// TODO
