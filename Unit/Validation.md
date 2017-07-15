@@ -21,7 +21,7 @@ First case must be tested via mocking validator instance and running test on the
 public function test_store_method()
 {
     $c = new Controller();
-    $v = m::mock(Validator::class);
+    $v = m::mock(\Illuminate\Contracts\Validation\Factory::class);
 
     // Substitute Validator instance in DI container.
     $previous = $this->app->make(\Illuminate\Contracts\Validation\Factory::class);
@@ -103,3 +103,5 @@ public function test_validator_foo_rule()
     $this->assertFalse($rule('attr', 'bar'));
 }
 ```
+
+Class-based rules (Laravel 5.5) can be simply tested as regular classes with basic rules for code coverage.
