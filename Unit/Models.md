@@ -162,6 +162,13 @@ public function test_listeners_attached()
 }
 ```
 
+> Do not use `Dispather::hasListeners()` method, because events might be assigned from anywhere in the application.
+> Purpose of this test is to make sure that events have been assigned inside the model.
+
+Testing of observers should follow the same approach as for testing any usual classes.
+While event handlers, attached during boot can be accessed via `getListeners()` method of event dispatcher.
+However it is highly recommended not to use such assignments and use observers instead.
+
 ### Additional checks.
 
 All additional methods and configurations must be tested if present, including but not limited to:
