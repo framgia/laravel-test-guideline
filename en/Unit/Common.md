@@ -80,10 +80,12 @@ Direct property modification is used here, because default extension requires mo
 which we don't need.
 
 ```php
+protected $db;
+
 public function setUp()
     {
         $this->afterApplicationCreated(function () {
-            $connection = m::mock(
+            $this->db = m::mock(
                 Connection::class.'[select,update,insert,delete]',
                 [m::mock(\PDO::class)]
             );
@@ -95,7 +97,7 @@ public function setUp()
             $p = $r->getProperty('connections');
             $p->setAccessible(true);
             $list = $p->getValue($manager);
-            $list['mock'] = $connection;
+            $list['mock'] = $this->db;
             $p->setValue($manager, $list);
         });
 
