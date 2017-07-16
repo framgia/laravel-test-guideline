@@ -1,26 +1,25 @@
 # Testing Transformers and Presenters
 
-Almost every project includes serializations and presenters in one or another way.
+Hầu hết các project đều bao gồm serializations và presenters, theo cách này hay cách khác.
 
-The default way for Laravel is to use mutators/getters on model classes, however in more complex applications,
-a variety of ways may be applied.
+Cách thức mặc định mà Laravel cung cấp đó là sử dụng mutators/getters trong Model class, tuy nhiên trong những application phức tạp, ta nên sử dụng những cách khác.
 
-This guide is applicable for general cases of transformers or presenters.
+Hướng dẫn dưới đây có thể được áp dụng cho những trường hợp chung dùng transformers hay presenters.
 
 ## Guide
 
-Having appropriate transformers is critical for API providing applications and highly recommended for others.
+Sử dụng transformers một cách thích đáng là rất cần thiết cho những application cung cấp API, và cũng rất khuyến khích sử dụng trong những application khác nữa.
 
-Transformer tests must complete following purposes:
+Transformer test phải tuân thủ các mục tiêu sau:
 
-1. Ensure data consistency (object structure must not change between commit unexpected).
-2. Ensure property mutations are done correctly.
-3. Ensure data types match expected output.
+1. Đảm bảo tính nhất quán của dữ liệu (object structure must not change between commit unexpected).
+2. Đảm bảo protertu mutations được thực hiện chính xác.
+3. Đảm bảo kiểu data khớp với đầu ra mong muốn.
 
-For many API client applications appearance of new properties or absence of some can be critical.
-It means that any change to such structure must be under control.
+Trong rất nhiều các API client applications, việc xuất hiện properties mới, hay mất một vài properties có thể sẽ dẫn đến hậu quả nghiêm trọng.
+Do đó mọi thay đổi đến cấu trúc object phải luôn được kiểm soát.
 
-Ensure that your transformers always have consistent data
+Hãy chắc chắn rằng transformers của bạn luôn có dữ liệu nhất quán.
 
 ```php
 public function test_output_contains_valid_structure()
@@ -53,11 +52,9 @@ public function test_output_contains_valid_structure()
 }
 ```
 
-If your application implements feature tests for API, it is suitable to replace this check with `assertJsonStructure`
-method in feature test case.
+Nếu application của bạn có implement Feature Test cho API, bạn có thể thay việc check này bằng cách sử dụng method `assertJsonStructure` bên trong Feature test case.
 
-For JSON outputs it is necessary to check data types, espcecially if your API clients might be written in strict type
-languages.
+Với JSON output, cần phải check data type, đặc biệt nếu API Clients của bạn được viết bằng những ngôn ngữ dùng strict-type.
 
 ```php
 public function test_data_types()
