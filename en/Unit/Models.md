@@ -183,4 +183,4 @@ All additional methods and configurations must be tested if present, including b
 ## Examples
 
 * [Example abstract model test helper](https://github.com/framgia/laravel-test-examples/blob/master/tests/ModelTestCase.php)
-* [Example model](https://github.com/framgia/laravel-test-examples/blob/master/app/City.php) and [test](https://github.com/framgia/laravel-test-examples/blob/master/tests/Unit/CityTest.php])
+* [Example model](https://github.com/framgia/laravel-test-examples/blob/master/app/City.php) and [test](https://github.com/framgia/laravel-test-examples/blob/master/tests/Unit/CityTest.php)

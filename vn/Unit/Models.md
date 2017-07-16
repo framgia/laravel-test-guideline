@@ -1,20 +1,18 @@
 # Testing Models
 
-Models are ones of mostly used classes in Laravel applications. And at the same time they are the most complicated
-from all default components.
+Models là một trong những class được sử dụng nhiều nhất trong Laravel Application. Cùng với đó, chúng là thành phần phức tạp nhất trong số các default components.
 
-Depending on implementation, models might include validation, external services connection (e. g. ElasticSearch indexing),
-property getters and various custom methods.
+Tuỳ vào cách bạn thực hiện, mà models có thể bao gồm validation, external services connection (e. g. ElasticSearch indexing), hay property getters và nhiều custom methods khác.
 
-As far as models might be used in any part of application, they must be tested carefully.
+Do models được sử dụng ở khắp nơi trong application, nên chúng phải được test một cách cẩn thận.
 
 ## Guide
 
 ### Configuration properties
 
-Any model includes some default configurations with public or protected properties. These properties might affect
-application behaivor a lot, but they are the most easy to test.
-You can simply assert return values of that property getters:
+Mọi Model đều bao gồm một vài các thiết lập cơ bản với các public hoặc protected properties. Những properties này có thể ảnh hưởng rất nhiều đến cách thức hoạt động của application, tuy nhiên chúng là là những thành phần dễ test nhất.
+
+Bạn có thể assert giá trị trả về của property getters:
 
 ```php
 public function test_contains_valid_fillable_properties()
@@ -24,29 +22,26 @@ public function test_contains_valid_fillable_properties()
 }
 ```
 
-Following method tests must be included in tests:
+Những method tests sau cần phải được sử dụng trong quá trình tests:
 
 - `$fillable` -> `getFillable()`
 - `$guarded` -> `getGuarded()`
 - `$table` -> `getTable()`
 - `$primaryKey` -> `getKeyName()`
-- `$connection` -> `getConnectionName()`: in case multiple connections exist.
+- `$connection` -> `getConnectionName()`: Trong trường hợp bạn sử dụng multiple connections.
 - `$hidden` -> `getHidden()`
 - `$visible` -> `getVisible()`
 - `$casts` -> `getCasts()`: note that method appends incrementing key.
 - `$dates` -> `getDates()`: note that method appends `[static::CREATED_AT, static::UPDATED_AT]`.
-- `newCollection()`: assert collection is exact type. Use `assertEquals` on `get_class()` result, but not `assertInstanceOf`.
+- `newCollection()`: kiểm tra collection có đúng kiểu dữ liệu hay không. Sử dụng `assertEquals` với kết quả trả về từ hàm `get_class()`, chứ không dùng `assertInstanceOf`.
 
-It is fine to put all checks inside one test method, e. g. `test_model_configuration()`
+Chúng ta có thể đặt hết tất cả những kiểm tra trên bên trong một test method, chẳng hạn như `test_model_configuration()`
 
 ### Relations
 
-Relations are defined as methods returning appropriate relation classes. In some cases relation may be defined
-with custom foreign keys or additional query changes. The best way to test relation config is to assert values
-on returned `Relation` instance.
+Relations được định nghĩa là các methods trả về class relation tương ứng. Trong nhiều trường hợp, relation có thể được định nghĩa với custom foreign keys, hoặc với những câu query thêm vào. Cách tốt nhất để test relation config là assert instance `Relation` được trả về.
 
-In all default cases, any relations is being created with `$model->newQuery()` as builder instance. If not modified,
-it can be simply asserted with `assertEquals`
+Trong tất cả các trường hợp bình thường, các relations được tạo ra với `$model->newQuery()` như là builder instance. Nếu không được chỉnh sửa gì, nó có thể được kiểm tra một cách đơn giản với `assertEquals`
 
 ```php
 public function test_user_relation()
@@ -62,24 +57,24 @@ public function test_user_relation()
 }
 ```
 
-Depending on relation type, following test asserts must be included:
+Tuỳ theo loại quan hệ, mà các test assertion sau cần phải được sử dụng:
 
-- `getQuery()`: assert query has not been modified or modified properly.
-- `getForeignKey()`: any `HasOneOrMany` or `BelongsTo` relation, but key type differs (see documentaiton).
-- `getQualifiedParentKeyName()`: in case of `HasOneOrMany` relation, there is no `getLocalKey()` method, so this one should be asserted.
-- `getOwnerKey()`: `BelongsTo` relation and its extendings.
-- `getQualifiedForeignPivotKeyName()`: `BelongsToMany` relation.
-- `getQualifiedRelatedPivotKeyName()`: `BelongsToMany` relation.
-- `getTable()`: `BelongsToMany` relation. Optional, because included in methods above.
-- `getMorphType()`: any polymorphic relations.
+- `getQuery()`: kiểm tra query chưa được chỉnh sửa, hoặc đã được chỉnh sửa một cách chính xác.
+- `getForeignKey()`: với những quan hệ `HasOneOrMany` hoặc `BelongsTo`, nhưng loại key thì khác nhau (see documentaiton).
+- `getQualifiedParentKeyName()`: với quan hệ `HasOneOrMany`, do không có `getLocalKey()` method, nên method này cần được kiểm tra.
+- `getOwnerKey()`: với quan hệ `BelongsTo` và những quan hệ mở rộng từ nó.
+- `getQualifiedForeignPivotKeyName()`: với quan hệ `BelongsToMany`.
+- `getQualifiedRelatedPivotKeyName()`: với quan hệ `BelongsToMany`.
+- `getTable()`: với quan hệ `BelongsToMany`. Không bắt buộc, bởi nó được bao gồm trong những method ở trên.
+- `getMorphType()`: với quan hệ polymorphic.
 
 ### Property values
 
-Many models might include property mutators or getters. Those methods modify output in many cases including `__get` and
-`toArray()` results.
+Rất nhiều models có thể bao gồm property mutators hay getters. Những methods này thực hiện tay đổi output trong rất nhiều trường hợp, bao gồm cả kết quả từ `__get` và `toArray()`.
 
-There must be a test case, which makes assertion on all properties.
-For such case, you can use `unguarded` helper or remove guards manually.
+Cần phải có những test cases thực hiện assertion trên tất cả các properties.
+
+Trong trường hợp này, bạn cần sử dụng `unguarded` helper hoặc tự loại bỏ guards.
 
 ```php
 public function test_properties_have_valid_values()
@@ -97,9 +92,11 @@ public function test_properties_have_valid_values()
 }
 ```
 
-In case any getter exists, values might be modified, so tests should cover such additions.
-Use `getAttributeValue()` to make sure, getter is called and property, and call to getter itself to test different values.
-As far as mutators might also exist, use `setRawAttributes` to set initial values to ignore any unexpected value changes.
+Trong trường hợp có những getter, thì giá trị trả ra có thể bị thay đổi, bởi vậy tests cần cover các trường hợp này.
+
+Sử dụng `getAttributeValue()` để chắc chắn rằng getter đã được gọi. Sau đó gọi đến getter để test giá trị trả ra là khác nhau.
+
+Trong trường hợp có cả mutators, sử dụng `setRawAttributes` để set giá trị ban đầu mà không gặp phải những sự thay đổi không lường trước được trên gía trị đó.
 
 ```php
 public function test_status_getter()
@@ -122,7 +119,7 @@ public function test_status_getter()
 }
 ```
 
-Same rules apply to mutators. In order to avoid any getters applied, use `getAttributes()` method for assertions.
+Những quy tắc như vậy cũng được apply cho Mutators. Để tránh các getters được thực hiện, sử dụng method `getAttributes()` cho các assertions.
 
 ```php
 public function test_status_getter()
@@ -145,8 +142,7 @@ public function test_status_getter()
 
 ### Events
 
-Model includes protected static `$dispatcher` property, which stores application event handler. If your model
-uses internal events or observers, make sure that proper listeners are assigned by mocking dispatcher class.
+Model bao gồm protected static `$dispatcher` property, thứ có chứa application event handler. Nếu model của bạn sử dụng internal events hay observers, hãy chắc chắn rằng listeners tương ứng được assign thông qua class dispather được mock.
 
 ```php
 public function test_listeners_attached()
@@ -162,22 +158,26 @@ public function test_listeners_attached()
 }
 ```
 
-> Do not use `Dispather::hasListeners()` method, because events might be assigned from anywhere in the application.
-> Purpose of this test is to make sure that events have been assigned inside the model.
+> Không sử dụng `Dispather::hasListeners()` method, bởi event có thể được assign từ bất kỳ đâu trong application.
+> Mục đích của test này là để đảm bảo rằng events được assign từ bên trong Model.
 
-Testing of observers should follow the same approach as for testing any usual classes.
-While event handlers, attached during boot can be accessed via `getListeners()` method of event dispatcher.
-However it is highly recommended not to use such assignments and use observers instead.
+Testing với observers nên tuân theo những cách thức tiếp cận chung giống với testing cho các class thông thường khác.
+
+Event handlers được attach trong quá trình boot có thể được truy cập thông qua `getListeners()` method của event dispatcher.
+Tuy nhiên hoàn toàn không nên sử dụng assignments kiểu như vậy, mà thay vào đó nên dùng observers.
 
 ### Additional checks.
 
-All additional methods and configurations must be tested if present, including but not limited to:
+Tất cả các method hay các configuration khác đều phải được test. Chúng bao gồm (không phải là toàn bộ):
 
 - Custom model methods.
-- Usage of traits.
-- Custom `CREATED_AT` and `UPDATED_AT` keys.
-- `$with` property if set.
-- `$incrementing` property if changed by default.
-- `$dateFormat` property if changed by default.
+- sử dụng Traits.
+- Custom `CREATED_AT` và `UPDATED_AT` keys.
+- `$with` property nếu có.
+- `$incrementing` property nếu được thay đổi so với mặc định.
+- `$dateFormat` property nếu được thay đổi so với mặc định.
 
 ## Examples
+
+* [Example abstract model test helper](https://github.com/framgia/laravel-test-examples/blob/master/tests/ModelTestCase.php)
+* [Example model](https://github.com/framgia/laravel-test-examples/blob/master/app/City.php) and [test](https://github.com/framgia/laravel-test-examples/blob/master/tests/Unit/CityTest.php)
