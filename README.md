@@ -1,19 +1,22 @@
 # Framgia's Laravel Project Testing Guidelines
+
+*For Vietnamese version of this document, please refer [this](./README_VN.md)*
+
 Guideline for writing tests in a Laravel Project
 
-- [Introduction](./Introduction.md)
-- [Knowledge](./Knowledge.md)
-- [Conventions](./Conventions.md)
+- [Introduction](./en/Introduction.md)
+- [Knowledge](./en/Knowledge.md)
+- [Conventions](./en/Conventions.md)
 - [Laravel Test Examples Project](https://github.com/framgia/laravel-test-examples)
 
 # Guidelines
 ### Unit Tests
-- [Controllers](./Unit/Controllers.md)
-- [Middleware](./Unit/Middleware.md)
-- [Models](./Unit/Models.md)
-- [Transformers](./Unit/Transformers.md)
-- [Validation](./Unit/Validation.md)
-- [Common](./Unit/Common.md)
+- [Controllers](./en/Unit/Controllers.md)
+- [Middleware](./en/Unit/Middleware.md)
+- [Models](./en/Unit/Models.md)
+- [Transformers](./en/Unit/Transformers.md)
+- [Validation](./en/Unit/Validation.md)
+- [Common](./en/Unit/Common.md)
 
 ### Integration Tests
-- [Integration](./Integration.md)
+- [Integration](./en/Integration/Integration.md)
