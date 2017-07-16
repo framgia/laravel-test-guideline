@@ -110,3 +110,9 @@ You should remember following things for database testing:
 - You may have named connections, be careful with that.
 - Models get connections via `ConnectionResolverInterface` which is assigned in the model itself and might differ.
 - Queries are created differently using different grammars. Use the one suitable for your project.
+
+## Examples
+
+* [Laravel event](https://github.com/framgia/laravel-test-examples/tree/master/app/Events) and [tests](https://github.com/framgia/laravel-test-examples/tree/master/tests/Unit/Events)
+* [Listeners](https://github.com/framgia/laravel-test-examples/tree/master/app/Listeners) and [tests](https://github.com/framgia/laravel-test-examples/tree/master/tests/Unit/Listeners)
+* [Database mock setup](https://github.com/framgia/laravel-test-examples/blob/master/tests/Unit/Http/Controllers/CityControllerTest.php#L24) and [usage](https://github.com/framgia/laravel-test-examples/blob/master/tests/Unit/Http/Controllers/CityControllerTest.php#L76)

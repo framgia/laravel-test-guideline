@@ -35,3 +35,6 @@ In the special case of session modifications, it is highly recommended to use `$
 instead of facades or dependency injection.
 
 ## Examples
+
+* [Middlewares](https://github.com/framgia/laravel-test-examples/tree/master/app/Http/Middleware)
+* [Middleware tests](https://github.com/framgia/laravel-test-examples/tree/master/tests/Unit/Http/Middleware)
