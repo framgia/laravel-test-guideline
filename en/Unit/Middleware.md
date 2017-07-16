@@ -16,7 +16,8 @@ Depending on your implementation, these cases might be mixed (e. g. conditional 
 In order to mock `$next` callback, you can simply create a closure with assertions within test case:
 
 ```php
-public function test_middleware_appends_header() {
+public function test_middleware_appends_header()
+{
     //...
     $next = function ($request) {
         $this->assertEquals('Appended_header_data', $request->headers->get('header-name'));
