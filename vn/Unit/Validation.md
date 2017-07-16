@@ -1,21 +1,19 @@
 # Testing Validation Rules.
 
-There are 2 approaches for testing validation rules:
-1. Check if necessary rules has been set
-2. Check if invalid data cannot pass validation
+Có 2 cách thực hiện việc test với Validation Rules:
 
-While first is very simple and does not require any complicated test cases, the second might need a lot of data
-to test. It is highly recommended to provide new test cases for every appearance of invalid data during user testing
-or production use.
+1. Kiểm tra xem những rules cần thiết đã được set hay chưa
+2. Kiểm tra nhưng data không hợp lệ thì không thể pass qua được validation
+
+Trường hợp trước thì rất là đơn giản, và không yêu cầu những test cases phức tạp, trường hợp sau thì lại cần rất nhiều data để test. Những test cases mới nên được bổ sung liên tục mỗi khi có sự xuất hiện của dữ liệu không hợp lệ phát sinh trong quá trình user testing hoặc sử dụng trên production.
 
 ## Guide
 
 ### Testing validation rules
 
-Validation rules are set in 2 common ways: various use inside app logic (via controller `validate()` method, `Validator`
-facade, etc.) or via form requests.
+Validation rules được set qua 2 cách thông thường: được sử dụng trong app logic (thông qua hàm `validate()` của controller, hay `Validator` facade ...) hoặc qua Form Requests.
 
-First case must be tested via mocking validator instance and running test on the class which contains logic.
+Trường hợp đầu tiên cần phải được test thông qua mocking validator instance, và chạy test trong những class bao gồm logic.
 
 ```php
 public function test_store_method()
@@ -48,7 +46,7 @@ public function test_store_method()
 }
 ```
 
-In case of form requests it can be done much simpler:
+Trong trường hợp dùng Form Requests, mọi thứ có thể được hoàn thành dễ dàng hơn:
 
 ```php
 public function test_it_contains_valid_rules()
@@ -64,19 +62,19 @@ public function test_it_contains_valid_rules()
 
 ### Testing abnormal data
 
-It is impossible to predict all cases of abnormal data, however when such cases appear, tests must be extended.
+Việc đoán trước toàn bộ các abnormal data là hoàn toàn không thể, tuy nhiên, mỗi khi những trường hợp như thế xuất hiện, cần phải bổ sung thêm những test case mới.
 
-1. Abnormal data is detected during application use.
-2. Implement test case for controller or other instance with abnormal data to emulate failure.
-3. Implement fix and provide test case with expected interruption.
+1. Abnormal data được phát hiện trong quá trình sử dụng application.
+2. Thêm vào những test case cho controller hay các instance khác với abnormal data để mô phỏng lỗi.
+3. Thêm vào bản fix và test case với những lỗi được dự đoán từ trước.
 
 ### Testing custom validation rules
 
-If your application contains custom validations, you must include test cases for such rules in a separate test case.
-These tests are required not to check user input, but to test validation logic itself and be sure that it fails or passes
-in predicted cases.
+Nếu trong application của bạn có những custom validations, bạn cần phải thêm vào những test cases cho các rules đó.
 
-Unfortunately, there is no available method to extract extensions from validation factory, so protected property should be read.
+Những tests này không yêu cầu kiểm tra user input, mà cần phải kiểm tra validation logic để chắc chắn rằng nó fails hoặc passes trong những trường hợp được dự báo trước.
+
+Thật không may là không có một method nào để extract extensions từ validation factory, bởi thế cần phải đọc ra protected property.
 
 ```php
 // AppServiceProvider::boot
@@ -104,4 +102,5 @@ public function test_validator_foo_rule()
 }
 ```
 
-Class-based rules (Laravel 5.5) can be simply tested as regular classes with basic rules for code coverage.
+Class-based rules (Laravel 5.5) có thể được test một cách đơn giản, giống những class bình thường khác với những rules cơ bản cho code coverage.
+
