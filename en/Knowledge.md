@@ -4,9 +4,9 @@
 
 Before creating of any test cases, we should determine input values of **particular function/method** which need to be test. The test cases should be designed to cover all combinations of input values and preconditions. Basically, we usually divide types of test case by 3 types of input dataset for unit testing.
 
-- **Normal**: Inputs is normal range values (accepted). A large amount of code can be covered just by running normal test cases.
-- **Boundary**: Inputs is at or just beyond its maximum or minimum limits. It is used to identify errors at boundaries rather than finding those exist in center of input domain.
-- **Abnormal**: Inputs is invalid (illegal or not expected) to test error handling and recovery.
+- **Normal**: Inputs are normal range values (accepted). A large amount of codes can be covered just by running **normal** test cases.
+- **Boundary**: Inputs are at or just beyond its maximum or minimum limits. They are used to identify errors at boundaries rather than finding those exist in center of input domain.
+- **Abnormal**: Inputs are invalid (illegal or not expected) to test error handling and recovery.
 
 For example: *Suppose we have a function which validate email address entered by user. The maximum length of an email address is 50 characters.*
 

@@ -1,42 +1,39 @@
 # Integration Tests
 
-Purpose of integration tests is to make sure that all components work together as needed.
+Mục đích của Integration Test là để chắc chắn rằng tất cả các components làm việc với nhau như ta mong muốn.
 
-While making such tests, remember that changes to data storage or interactions with external services might happen.
-In order to handle such cases properly, you might still need to create test doubles for some classes.
+Khi thực hiện kiểu test này, hãy nhớ rằng những thay đổi với data storage hay những thao tác với các service bên ngoài là có thể xảy ra.
 
-Which classes should be doubled depends on your testing approach and might be different depending on app size.
+Để có thể giải quyết một cách đúng đắn những tình huống như vậy, có thể bạn vẫn cần phải tạo các [Test Doubles](../Knowledge.md#test-doubles) cho một vài class.
+
+Việc những Class nào cần đến Test Doubles thì phụ thuộc vào cách tiếp cận của từng team, và có thể khác biệt phụ thuộc vào độ lớn của application.
 
 ## Guide
 
-Laravel provides 2 ways to create integration tests: making HTTP requests to routes and browser-based testing with
-`laravel/dusk` package.
+Laravel cung cấp cho chúng ta 2 cách để thực hiện Integration Test: tạo HTTP requests đến routes, và browser-based testing với `laravel\dusk` package.
 
-It is required to have HTTP tests, while browser tests don't have any specific requirements.
+Việc viết HTTP test là CẦN THIẾT, trong khi browser test thì không có yêu cầu cụ thể.
 
-Integration tests must cover EVERY route of application and complete following purposes:
+Integration test PHẢI cover được TOÀN BỘ route của application, và phải tuân thủ các mục đích sau:
 
 **HTTP**
-- Authentication and policy tests. Each case must have separate test assertion. No global checks allowed.
-- Check valid status codes for every type of response.
-- Check correct redirect codes and paths on different events.
-- Test validity of JSON responses.
-- Test Error handlers for correct responses.
-- Check validity of API versions (if necessary).
+- Authentication và Policy tests. Mỗi test case cần có những test assertion riêng biệt.
+- Kiểm tra Status Codes cho từng loại response.
+- Kiểm tra Redirect Codes và Paths cho các các sự kiện khác nhau.
+- Kiểm tra tính đúng đắn của JSON responses.
+- Kiểm tra Error Handlers cho các response.
+- Kiểm tra tính đúng đắn của API versions (nếu cần thiết).
 
 **Database**
-- Ensure data is written to database correctly during requests.
-- Test migration process.
-- Test abnormal data insertions are handled properly.
+- Đảm bảo data được ghi vào database một cách đúng đắn trong quá trình xử lý requests.
+- Kiểm tra quá trình migration.
+- Kiểm tra việc insert dữ liệu không bình thường thì có được xử lý chính xác hay không.
 
-If your application interacts with external services and servers, you either need to use staging versions of
-such services or mock your client classes.
+Nếu application của bạn có tương tác với những services hay servers bên ngoài, thì bạn cần sử dụng phiên bản Staging của những services đó, hoặc `mock` class Client của bạn.
 
-Testing environment can be defined with special configurations and variables, e. g. `testing` database connection with
-`DB_TEST_DATABASE` env variable. However it is **strictly recommended** to replace production variables instead in
-phpunit.xml or CI configuration.
+Testing environment có thể được định nghĩa bởi những config và biến đặc biệt. Chặng hạn như ở `testing` database connection ta có thể tạo biến môi trường là `DB_TEST_DATABASE`. Tuy nhiên, ta nên làm theo cách là thay đổi giá trị của các biến production ở bên trong file `phpunit.xml` hoặc trong config CI.
 
-It is good to run tests twice with `APP_ENV` set both to `testing` and `production`.
+Sẽ là tốt hơn nếu phần tests có thể được chạy hai lần, với `APP_ENV` được đặt giá trị lần lượt là `testing` và `production`.
 
 ```xml
 <php>

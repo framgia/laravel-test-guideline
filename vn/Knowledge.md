@@ -2,13 +2,15 @@
 
 ## Classify
 
-Before creating of any test cases, we should determine input values of **particular function/method** which need to be test. The test cases should be designed to cover all combinations of input values and preconditions. Basically, we usually divide types of test case by 3 types of input dataset for unit testing.
+Trước khi tạo bất cứ Test Cases nào, chúng ta nên xác định rõ giá trị đầu vào của **từng function/method** cần được test. Các Test Cases phải được thiết kế để có thể cover được hết các sự kết hợp của các giá trị inputs cùng các điều kiện.
 
-- **Normal**: Inputs is normal range values (accepted). A large amount of code can be covered just by running normal test cases.
-- **Boundary**: Inputs is at or just beyond its maximum or minimum limits. It is used to identify errors at boundaries rather than finding those exist in center of input domain.
-- **Abnormal**: Inputs is invalid (illegal or not expected) to test error handling and recovery.
+Nhìn chung, chúng ta thường chia test case ra làm 3 loại dựa trên dữ liệu inputs cho Unit Test.
 
-For example: *Suppose we have a function which validate email address entered by user. The maximum length of an email address is 50 characters.*
+- **Normal**: Inputs thuộc vào dải dữ liệu bình thường (accepted). Một lượng lớn codes có thể được cover bằng cách chỉ cần chạy **normal** test cases.
+- **Boundary**: Inputs bằng hoặc xấp xỉ giá trị maximum hay minimum. Chúng được sử dụng để phát hiện lỗi tại cận, thay vì tìm kiếm lỗi tại những vị trí ở giữa trong dải input.
+- **Abnormal**: Inputs là không hợp lệ hay không được kỳ vọng, dùng để kiểm tra khả năng handle lỗi.
+
+Ví dụ: *Giả sử như chúng ta có một function để kiểm tra địa chỉ email nhập vào từ user. Độ dài tối đa của email là 50 ký tự.*
 
 ```php
 function validate($email) {
@@ -20,7 +22,7 @@ function validate($email) {
 
 ```
 
-we should write the test cases as below:
+Chúng ta nên viết các Test Cases như sau:
 
 <details>
     <summary>Normal cases</summary>
