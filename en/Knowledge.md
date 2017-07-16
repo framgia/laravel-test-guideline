@@ -101,7 +101,7 @@ Here are some types of `Test Doubles`
 - Fake objects actually have working implementations, but usually take some shortcut which makes them not suitable for production (an in memory database is a good example).
 
 ### Stubs
-- Stubs provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test. In a shorthand, Stubs give out data that goes to the object/class under the tests.
+- Stubs provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test.
 
 ### Mocks
 - Mocks are objects pre-programmed with expectations which form a specification of the calls they are expected to receive.

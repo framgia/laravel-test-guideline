@@ -86,35 +86,35 @@ public function test_valid_email_format_and_length_exceeded()
 </details>
 
 ## Test Doubles
-One of the fundamental requirements of Unit Test is **isolation**. In general, isolation is hard (if not impposible) as there are always dependencies across the whole project.
+Một trong những yêu cầu cơ bản của Unit Test đó là tính **cô lập** (**isolation**). Nhìn chung thì tính cô lập là rất khó (nếu không muốn nói là không thể) bởi luôn luôn có rất nhiều dependencies trong cả project.
 
-Therefore, the concept of `Test Doubles` was born. A `Test Double` allows us to break the original dependency, helping isolate the unit.
+Vì thế, khái niệm về `Test Doubles` ra đời. Một `Test Double` cho phép chúng ta loại bỏ dependency nguyên bản, từ đó giúp cô lập unit.
 
-Here are some types of `Test Doubles`
+Dưới đây là một vài loại `Test Doubles`
 
-***Some parts of following definitions are taken from Martin Fowler's Blog [Mocks Aren't Stubs](https://martinfowler.com/articles/mocksArentStubs.html)***
+***Một vài phần trong các định nghĩa sau được lấy từ bài viết [Mocks Aren't Stubs](https://martinfowler.com/articles/mocksArentStubs.html) trên blog của Martin Fowler***
 
 ### Dummies
-- Dummy objects are passed around but never actually used. Usually they are just used to fill parameter lists.
+- Dummy là objects được truyền vào nhưng mà không hề được sử dụng. Chúng thường chỉ được dùng để hoàn thành danh sách parameter.
 
 ### Fake
-- Fake objects actually have working implementations, but usually take some shortcut which makes them not suitable for production (an in memory database is a good example).
+- Fake objects thực ra có mang những triển khai logic, thế nhưng thường sử dụng những "lối tắt", khiến chúng không thích hợp để triển khai trên production (Ví dụ như in memory database)
 
 ### Stubs
-- Stubs provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test. In a shorthand, Stubs give out data that goes to the object/class under the tests.
+- Stubs đưa ra những câu trả lời có sẵn cho các lời gọi hàm được thực hiện trong quá trình test, và thường sẽ không trả về bất cứ cái gì ngoài những thứ mà chúng đã được lập trình trong bài test.
 
 ### Mocks
-- Mocks are objects pre-programmed with expectations which form a specification of the calls they are expected to receive.
+- Mocks là objects đã được lập trình trước với các expectations, tạo ra một đặc tả cho lời gọi mà chúng dự kiến sẽ nhận được.
 
 ### Stubs vs Mocks
-- Stub helps us to run test. Otherwise, Mock is an object which runs the test.
-- A Fake which you verify calls against is a Mock. Otherwise, it's a Stub.
-- Stub can never fail the test. Otherwise, Mock can.
+- Stub giúp chúng ta chạy test. Mock là object thực hiện test.
+- Một Fake mà bạn dùng để kiểm tra lời gọi hàm thì là Mock. Nếu không nó là Stub.
+- Stub không bao giờ có thể làm cho test fail. Mock thì có thể.
 
 ## Examples
-- Here are some PHP Mocking Frameworks that you can use to easily create Mocks for testing:
-    - Mockery: It is highly recommended. It has been already integrated with Laravel Project. Document [here](http://docs.mockery.io/)
-    - Prophecy: A part of PHPSpec project, but can be used outside PHPSpec. Check it [here](https://github.com/phpspec/prophecy)
-- Examples of creating Stubs and Mocks using **Mockery**
+- Dưới đây là các PHP Mocking Frameworks mà bạn có thể sử dụng để dễ dàng tạo ra Mocks phục vụ việc test:
+    - Mockery: Được khuyến khích sử dụng. Đã được tích hợp ngay trong Laravel Project. Tham khảo tài liệu ở [đây](http://docs.mockery.io/)
+    - Prophecy: Một phần của PHPSpec project, nhưng có thể được sử dụng độc lập bên ngoài PHPSpec. Xem thêm tại [đây](https://github.com/phpspec/prophecy)
+- Ví dụ về việc tạo Stubs và Mocks với **Mockery**
 
 // TODO

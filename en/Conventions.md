@@ -26,7 +26,7 @@ public function test_it_throws_an_exception_when_email_is_too_long()
 - **Auth policies**
 - And any additional project-specific classes
 
-## Integration tests Required Components
+## Integration Test Required Components
 - **Routes**: test input/output with integration in a whole system
 - **Route authentication**
 
