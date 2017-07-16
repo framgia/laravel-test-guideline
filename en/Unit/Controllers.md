@@ -12,3 +12,5 @@ However, this affects only user input. Data provided from outside controller met
 ## Guide
 
 ## Examples
+
+* [Resource web controller](https://github.com/framgia/laravel-test-examples/app/Http/Controllers/CityController.php) and [tests](https://github.com/framgia/laravel-test-examples/blob/master/tests/Unit/Http/Controllers/CityControllerTest.php)
