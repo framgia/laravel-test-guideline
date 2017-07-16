@@ -84,10 +84,16 @@ public function setUp()
     {
         $connection = m::mock(Connection::class);
         // Replace SQLiteGrammar and Processor if necessary.
-        $query = new Builder($connection, new SQLiteGrammar(), new Processor());
-        $connection->allows()->table()->andReturnUsing(function ($table) use ($query) {
-            return $query->from($table);
-        })
+        $connection->allows()
+            ->table()
+            ->with(m::any())
+            ->andReturnUsing(function ($table) use ($connection) {
+                return (new Builder(
+                    $connection,
+                    new SQLiteGrammar(),
+                    new Processor()
+                ))->from($table);
+            });
 
         // Replace current default connection (if necessary)
         $this->afterApplicationCreated(function () use ($connection) {
