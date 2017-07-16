@@ -17,7 +17,7 @@
 
 ## Integration Test
 - Integration testing is the phase in software testing in which individual software modules are combined and tested as a group.
-- Unit tests help use to ensure that every single function works correctly. Integration tests help use to ensure that different parts of the project works flawlessly when combines with each others in the real life.
+- Unit tests help us to ensure that every single function works correctly. Integration tests help us to ensure that different parts of the project works flawlessly when combines with each others in the real life.
 
 ## PHPUnit
 - **PHPUnit** is a programmer-oriented testing framework for PHP. It is an instance of the xUnit architecture for unit testing frameworks.
@@ -28,7 +28,6 @@
 $ composer require --dev phpunit/phpunit
 ```
 
-- Homepage: https://phpunit.de/
 - Laravel project is already integrated with PHPUnit. You can start testing your App using the command:
 ```
 $ ./vendor/bin/phpunit
