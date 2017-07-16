@@ -82,39 +82,16 @@ which we don't need.
 ```php
 public function setUp()
     {
-        $connection = m::mock(Connection::class);
-        // Replace SQLiteGrammar and Processor if necessary.
-        $connection->allows()
-            ->table()
-            ->with(m::any())
-            ->andReturnUsing(function ($table) use ($connection) {
-                return (new Builder(
-                    $connection,
-                    new SQLiteGrammar(),
-                    new Processor()
-                ))->from($table);
-            });
+        $this->afterApplicationCreated(function () {
+            $connection = m::mock(
+                Connection::class.'[select,update,insert,delete]',
+                [m::mock(\PDO::class)]
+            );
 
-        // Replace current default connection (if necessary)
-        $this->afterApplicationCreated(function () use ($connection) {
-            $manager = $app['db'];
-            $name = $manager->getDefaultConnection();
-            $manager->purge($name);
-
-            $r = new ReflectionClass($manager);
-            $p = $r->getProperty('connections');
-            $p->setAccessible(true);
-            $p->setValue($manager, [
-                $name => $connection,
-            ])
-        });
-
-        // Assign a separate "mock" connection
-        $this->afterApplicationCreated(function () use ($connection) {
-            $manager = $app['db'];
+            $manager = $this->app['db'];
             $manager->setDefaultConnection('mock');
 
-            $r = new ReflectionClass($manager);
+            $r = new \ReflectionClass($manager);
             $p = $r->getProperty('connections');
             $p->setAccessible(true);
             $list = $p->getValue($manager);
@@ -122,7 +99,6 @@ public function setUp()
             $p->setValue($manager, $list);
         });
 
-        
         parent::setUp();
     }
 ```
