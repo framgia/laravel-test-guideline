@@ -1,14 +1,17 @@
 # Testing Controllers
 
-Controllers implement the main request processing algorithm. They must be paid the most attention during testing process.
+Controllers chứa những giải thuật chính cho vấn đề xử lý request. Chúng cần phải được chú ý nhiều trong quá trình testing.
 
-Unit tests written for controllers must be totally isolated and every external call from inside controller method must be mocked.
+Unit Tests viết cho controllers phải được cô lập hoàn toàn, và bất cứ lời gọi ra bên ngoài nào từ bên trong controller method phải được mock.
 
-Depending on your application logic, controllers might implement validation in method logic or via form requests.
-If first, controller tests must include cases with boundary and abnormal request input. Otherwise those cases should be
-tested in appropriate form request test cases.
-However, this affects only user input. Data provided from outside controller method must be mocked properly with all kinds of data.
+Tuỳ vào logic trong application của bạn, mà controllers có thể thực hiện việc Validation ở phần logic bên trong method hay thông qua Form Request.
+
+Nếu là trường hợp trước, Controller Tests PHẢI bao gồm các cases liên quan đến **[boundary](../Knowledge.md#Classify)** và **[abnormal](../Knowledge.md#Classify)** request input. Ở trường hợp còn lại, những cases trên phải được test trong Form Request test cases tương ứng.
+
+Tuy nhiên, điều này chỉ áp dụng với input được thực hiện bởi user. Data được cung cấp bởi những hàm bên ngoài controller method phải được mock chính xác với tất cả các loại data.
 
 ## Guide
 
 ## Examples
+
+* [Resource web controller](https://github.com/framgia/laravel-test-examples/app/Http/Controllers/CityController.php) and [tests](https://github.com/framgia/laravel-test-examples/blob/master/tests/Unit/Http/Controllers/CityControllerTest.php)
