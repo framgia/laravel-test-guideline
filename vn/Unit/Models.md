@@ -110,8 +110,8 @@ public function test_status_getter()
     $this->assertEquals('enabled', $m->getAttributeValue('status'));
 
     // Test getter logic with different values.
-    $this->assertEquals('disabled', $m->getStatusAttribute(2);
-    $this->assertEquals('pending', $m->getStatusAttribute(3);
+    $this->assertEquals('disabled', $m->getStatusAttribute(2));
+    $this->assertEquals('pending', $m->getStatusAttribute(3));
 
     // Abnormal case
     $this->expectException(\InvalidArgumentException::class);
