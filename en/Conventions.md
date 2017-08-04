@@ -31,5 +31,4 @@ public function test_it_throws_an_exception_when_email_is_too_long()
 - **Route authentication**
 
 ## Code Coverage
-- Code Coverage for **Model** SHOULD be greater than `95%`
 - Code Coverage for the entire project SHOULD be greater than `80%`
