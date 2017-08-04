@@ -6,7 +6,7 @@ Với những thành phần như Events, Event Listeners, Subscribers, Queue Job
 2. Cover tất cả các public methods với những tests cần thiết.
 3. Thật chú ý vào **main method** của class (e. g. `handle` đối với Listeners hoặc `passes` với rules).
 4. Coverage là không cần thiết đối với những methods mà trả về text (ví dụ như `message` đối với rules).
-5. Coverage là không bắt buộc đối với những hàn get/set cơ bản, hàm mà không chỉnh sửa tham số input.
+5. Coverage là không bắt buộc đối với những hàm get/set cơ bản, hàm mà không chỉnh sửa tham số input.
 
 ## Mocking DI instances
 
@@ -114,7 +114,6 @@ public function setUp()
 }
 ```
 
-You should remember following things for database testing
 Bạn cần phải nhớ tuân theo những thứ sau khi thực hiện database testing
 - Bạn có thể có connection có tên (named connection), hãy cẩn thận với nó.
 - Models lấy ra connections thông qua `ConnectionResolverInterface`, thứ được tự gán vào trong model và có thể khác biệt.

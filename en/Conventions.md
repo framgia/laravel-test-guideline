@@ -2,7 +2,7 @@
 
 ## Folder Structure
 - All Unit Tests MUST be placed inside the `tests/Unit` folder
-- All Integration Test MUST be placed inside the `tests\Feature` folder
+- All Integration Test MUST be placed inside the `tests/Feature` folder
 - Contents of the `Unit` and `Feature` folders MUST have the same structure with the main `app` folder. For example, unit tests for file `app/Models/User.php` MUST be written in `tests/Unit/Models/UserTest.php`
 
 ## Naming Convention

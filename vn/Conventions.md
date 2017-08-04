@@ -2,7 +2,7 @@
 
 ## Cấu trúc thư mục
 - Tất cả Unit Tests PHẢI được đặt trong thư mục `tests/Unit`
-- Tất cả Integration Tests PHẢI được đặt trong thư mục `tests\Feature`
+- Tất cả Integration Tests PHẢI được đặt trong thư mục `tests/Feature`
 - Nội dung bên trong thư mục `Unit` hay `Feature` PHẢI có cấu trúc giống với cấu trúc bên trong thư mục `app`. Ví dụ như Unit Test cho file `app/Models/User.php` PHẢI được viết bên trong file `tests/Unit/Models/UserTest.php`
 
 ## Quy tắc đặt tên

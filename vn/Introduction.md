@@ -6,7 +6,7 @@
 
 ## Unit Test
 - Unit Testing là một phương pháp kiểm thử phần mềm mà ở đó từng **đơn vị riêng lẻ** (Individual Unit) của source code được test để kiểm tra xem chúng có đảm bảo chất lượng để sử dụng không.
-- Ở trong Laravel Project, viết Unit Test là quá trình mà ở đó, tất cả các Test Case cho từng **funciton/method** riêng biệt được viết.
+- Ở trong Laravel Project, viết Unit Test là quá trình mà ở đó, tất cả các Test Case cho từng **function/method** riêng biệt được viết.
 - Unit Test cần được thiết kế để kiểm tra function một cách **độc lập**. Hay nói cách khác: **`A` cần `B` để chạy. Ngay cả khi `B` có lỗi, thì Unit Test của `A` VẪN SẼ PASS nếu không có vấn đề gì với `A`**
 - Một Unit Test tốt **KHÔNG NÊN** thực hiện những việc như sau:
     - Trigger để chạy codes từ những functions khác trong project
