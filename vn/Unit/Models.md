@@ -96,7 +96,7 @@ Trong trường hợp có những getter, thì giá trị trả ra có thể b�
 
 Sử dụng `getAttributeValue()` để chắc chắn rằng getter đã được gọi. Sau đó gọi đến getter để test giá trị trả ra là khác nhau.
 
-Trong trường hợp có cả mutators, sử dụng `setRawAttributes` để set giá trị ban đầu mà không gặp phải những sự thay đổi không lường trước được trên gía trị đó.
+Trong trường hợp có cả mutators, sử dụng `setRawAttributes` để set giá trị ban đầu mà không gặp phải những sự thay đổi không lường trước được trên giá trị đó.
 
 ```php
 public function test_status_getter()
@@ -171,7 +171,7 @@ Tuy nhiên hoàn toàn không nên sử dụng assignments kiểu như vậy, m�
 Tất cả các method hay các configuration khác đều phải được test. Chúng bao gồm (không phải là toàn bộ):
 
 - Custom model methods.
-- sử dụng Traits.
+- Sử dụng Traits.
 - Custom `CREATED_AT` và `UPDATED_AT` keys.
 - `$with` property nếu có.
 - `$incrementing` property nếu được thay đổi so với mặc định.

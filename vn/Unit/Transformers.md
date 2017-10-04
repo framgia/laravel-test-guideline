@@ -13,7 +13,7 @@ Sử dụng transformers một cách thích đáng là rất cần thiết cho n
 Transformer test phải tuân thủ các mục tiêu sau:
 
 1. Đảm bảo tính nhất quán của dữ liệu (object structure must not change between commit unexpected).
-2. Đảm bảo protertu mutations được thực hiện chính xác.
+2. Đảm bảo proterty mutations được thực hiện chính xác.
 3. Đảm bảo kiểu data khớp với đầu ra mong muốn.
 
 Trong rất nhiều các API client applications, việc xuất hiện properties mới, hay mất một vài properties có thể sẽ dẫn đến hậu quả nghiêm trọng.
