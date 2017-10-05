@@ -16,15 +16,13 @@ It is required to have HTTP tests, while browser tests don't have any specific r
 
 Integration tests must cover EVERY route of application and complete following purposes:
 
-**HTTP**
+### HTTP
 - Authentication and policy tests. Each case must have separate test assertion.
 - Check valid status codes for every type of response.
 - Check correct redirect codes and paths on different events.
-- Test validity of JSON responses.
 - Test Error handlers for correct responses.
-- Check validity of API versions (if necessary).
 
-**Database**
+### Database
 - Ensure data is written to database correctly during requests.
 - Test migration process.
 - Test abnormal data insertions are handled properly.
@@ -49,3 +47,27 @@ It is good to run tests twice with `APP_ENV` set both to `testing` and `producti
     <env name="DB_PASSWORD" value="secret"/>
 </php>
 ```
+
+### REST API / JSON API
+- Test validity of JSON responses.
+- Check validity of API versions (if necessary).
+- Ensure Error handlers provide valid JSON output.
+
+#### Idempotency and safety
+For REST APIs one of the most important things is following idempotency rules. An idempotent HTTP method is a HTTP method that can be called many times without different outcomes. It would not matter if the method is called only once, or ten times over. The result should be the same.
+
+Even though a request might be idempotent, it still might make changes to data, however, safe requests do not make any changes. If a seemingly safe method like GET will change a resource, it might be possible that any middleware client proxy systems between you and the server, will cache this response.
+
+Use the following table to check your methods.
+
+| HTTP Method | Idempotent | Safe |
+|-------------|:----------:|:----:|
+| OPTIONS     |     yes    |  yes |
+| GET         |     yes    |  yes |
+| HEAD        |     yes    |  yes |
+| PUT         |     yes    |  no  |
+| POST        |     no     |  no  |
+| DELETE      |     yes    |  no  |
+| PATCH       |     no     |  no  |
+
+- **Important:** use Integration tests to ensure that not any unnecessary database or external queries made. Ensure that safe methods do not produce data-affecting changes. The best way is to restrict any data changes on test case setup and allow specific changes before running assertions.
